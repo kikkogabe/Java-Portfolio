@@ -3,7 +3,6 @@
  *   "merged" list constructed from them in two different ways.
  *
  * @author Gabe Azzarita
- * @author YOUR PARTNER NAME HERE
  * @version 20221120
  *
  */
