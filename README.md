@@ -1,6 +1,6 @@
 # OSU CSE
 
-Portfolio of Java labs and projects completed through OSU CIS classes.
+Portfolio containing labs and projects in Java completed in OSU CIS classes.
 
 ## Getting Started
 
