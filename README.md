@@ -1,1 +1,1 @@
-# OSU-CSEE
+# OSU-CSE
