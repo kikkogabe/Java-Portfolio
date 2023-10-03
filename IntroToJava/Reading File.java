@@ -1,9 +1,7 @@
 /**
  * Program to copy one file into another, using command line arguments
  *
- * @author YOUR NAME HERE
- * @author YOUR PARTNER NAME HERE
- * @version DATE HERE
+ * @author Gabe Azzarita
  *
  */
 import java.io.FileNotFoundException;
