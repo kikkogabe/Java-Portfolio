@@ -4,7 +4,6 @@
  * the TestSimpleStringBuilder.java class to run this code.
  *
  * @author Gabe Azzarita
- * @author ENTER YOUR PARTNER'S NAME HERE
  * @version 20221127
  *
  */
