@@ -1,9 +1,7 @@
 # Project: Glossary
 
 ## Objectives
-Familiarity with designing and coding a realistic component-based application program without being provided a skeleton solution.
-Note that in your solution you can only use components from the components package and components from the standard Java libraries that have been used before in lectures/labs/projects (e.g., String). 
-You should not use other components from any other libraries that have not been used in CSE 2221.
+1. Familiarity with designing and coding a realistic component-based application program without being provided a skeleton solution.
 
 ### The Problem
 
@@ -31,7 +29,7 @@ Your customer, Cy Burnett, heads a major publisher of textbooks who is migrating
 These are the stated requirements for your program. If you have questions of clarification or need additional details, Cy is willing to answer them if you ask your instructor to contact him.
 
 ### Setup
-You're on your own! There are no other setup instructions; this is the "blank sheet of paper" project that you've all been waiting for!
+1. You're on your own! There are no other setup instructions; this is the "blank sheet of paper" project that you've all been waiting for!
 ### Method
 When you are satisfied that your program works, select your Eclipse project (not just some of the files, but the whole project), create a zip archive of it, and submit the zip archive to the Carmen dropbox for this project, as described in Submitting a Project.
 
