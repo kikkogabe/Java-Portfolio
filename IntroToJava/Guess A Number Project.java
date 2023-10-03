@@ -1,5 +1,5 @@
 /**
- * DESCRIPTION OF PROGRAM HERE
+ * Number guessing game
  *
  * @author Gabe Azzarita
  * @version 20220921
