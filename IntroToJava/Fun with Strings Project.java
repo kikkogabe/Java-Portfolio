@@ -1,5 +1,5 @@
 /**
- * DESCRIPTION OF PROGRAM HERE
+ * Given two strings from user, perform manipulations and operations on them
  *
  * @author Gabe Azzarita
  * @version 20220907
