@@ -1,8 +1,7 @@
 /**
- * DESCRIPTION OF PROGRAM HERE
- * @author YOUR NAME HERE
- * @author PARTNER NAME HERE
- * @version DATE HERE
+ * Fill arrays randomly using seed, and perform operations on them
+ *
+ * @author Gabe Azzarita
  *
  */
 import java.util.Arrays;
