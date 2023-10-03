@@ -1,0 +1,175 @@
+/**
+ * Program that applies a substitution cipher to user input
+ * 
+ * @author Gabe Azzarita
+ * @version 20221114
+ */
+
+import java.util.Scanner;
+import java.io.File;
+import java.io.IOException;
+import java.io.PrintWriter;
+
+
+public class SubstitutionCipher {
+
+    private static final String UPPERCASE = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    private static final String LOWERCASE = "abcdefghijklmnopqrstuvwxyz";
+
+    // Program that shifts each letter in a string by a desired number
+    public static String shift(String input, int shift) {
+        StringBuilder sb = new StringBuilder();
+        char newChar;
+        char tempChar;
+        int tempInt;
+        int i = 0;
+        for (i = 0; i < input.length(); i++) {
+            tempChar = input.charAt(i);
+            // Apply shift to only letters, not numbers or symbols
+            if (!Character.isLetter(tempChar)) {
+                sb.append(tempChar);
+            // Applying shift to uppercase letters
+            } else if (Character.isUpperCase(tempChar)){
+               tempInt = UPPERCASE.indexOf (tempChar);
+               // Applying a negative shift
+                if (shift < 1) {
+                    int absShift = Math.abs(shift);
+                    if (tempInt/absShift < 1) {
+                        tempInt += 26 + shift;
+                    } else {
+                        tempInt += shift;
+                    }
+                    newChar = UPPERCASE.charAt(tempInt);
+                    sb.append(newChar);
+                // Applying a positive shift
+                } else {
+                    if (tempInt + shift < 26) {
+                        tempInt += shift;
+                    } else {
+                        tempInt = tempInt + shift - 26;
+                    }
+                    newChar = UPPERCASE.charAt(tempInt);
+                    sb.append(newChar);
+                }
+            // Applying shift to lowercase letters
+            } else {
+                tempInt = LOWERCASE.indexOf (tempChar);
+                // Applying a negative shift
+                if (shift < 1) {
+                    int absShift = Math.abs(shift);
+                    if (tempInt/absShift < 1) {
+                        tempInt += 26 + shift;
+                    } else {
+                        tempInt += shift;
+                    }
+                    newChar = LOWERCASE.charAt(tempInt);
+                    sb.append(newChar);
+                // Applying a positive shift
+                } else {
+                    if (tempInt + shift < 26) {
+                        tempInt += shift;
+                    } else {
+                        tempInt = tempInt + shift - 26;
+                    }
+                    newChar = LOWERCASE.charAt(tempInt);
+                    sb.append(newChar);
+                }
+            }
+        }
+        return sb.toString();
+    }
+
+    // Prompt user for input file and return it
+    public static String promptForString(Scanner in, String promptMsg) {
+        String userInput;
+        System.out.print ("Enter an input file: ");
+        userInput = in.nextLine();
+        while (userInput.length() == 0){
+            System.out.println ("ERROR! Empty Input Not Allowed!");
+            System.out.print ("Enter an input file: ");
+            userInput = in.nextLine();            
+        }
+        return userInput;
+    }
+
+    // Transform each line in a file by calling shift method
+    public static boolean transformFile(String inFile, String outFile, int shift){
+        Scanner lineReader = null;
+        String oldString;
+        String newString;
+        try {
+            PrintWriter printWriter = new PrintWriter(new File(outFile));
+            int i = 0;
+            lineReader = new Scanner (new File(inFile));
+            while (lineReader.hasNext()) {
+                oldString = lineReader.nextLine();
+                newString = shift(oldString, shift);
+                printWriter.print(newString + "\n"); //Fix printWriter
+            }
+            printWriter.close();
+        } catch (IOException e) {
+            System.out.println ("ERROR! File " + inFile + " not found or cannot write to " + outFile);
+            return false;
+        } finally {
+            lineReader.close();   
+        }
+        return true;
+    }
+
+    // Pormpt user for choice from menu and return it
+    public static char getChoice(Scanner in) {
+        char userChoice;
+        System.out.print ("Enter your choice: ");
+        userChoice = in.nextLine().charAt(0);
+        userChoice = Character.toUpperCase(userChoice);
+        while ((userChoice!= 'E')&&(userChoice!= 'D')&&(userChoice!= 'Q')) {
+            System.out.println ("ERROR! Enter a valid value!");
+            System.out.print ("Enter your choice: ");
+            userChoice = in.nextLine().charAt(0);
+            userChoice = Character.toUpperCase(userChoice);
+        }
+        return userChoice;
+    }
+
+    // Display menu options
+    public static void displayMenu() {
+        System.out.println("[E]ncode a file");
+        System.out.println("[D]ecode a file");
+        System.out.println("[Q]uit");
+    }
+
+    // Main method
+    public static void main(String[] args)throws IOException{
+        Scanner in = new Scanner(System.in);
+        String inFile;
+        String outFile;
+        String promptMsg = "";
+        int shift;
+        char choice;
+        // Loop that runs until user selects 'Q'
+        while (true) {
+            displayMenu();
+            choice = getChoice(in);
+            if (choice == 'Q') {
+               System.out.println();
+               break;
+            }
+            inFile = promptForString(in, promptMsg);
+            System.out.print ("Enter an output file: ");
+            outFile = in.nextLine();
+            System.out.print ("Enter a shift amount: ");
+            shift = in.nextInt();
+            if (choice == 'D') {
+                shift = -shift;
+            }
+            in.nextLine();
+            transformFile (inFile, outFile, shift);
+            System.out.println ("Finished writing to file.");
+            System.out.println ();
+        }
+        // Concluding statements and close scanner
+        System.out.println ("Goodbye!");
+        in.close();
+    }
+
+}
